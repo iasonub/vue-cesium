@@ -1,0 +1,332 @@
+$header-height: 4.5vw;
+$background:rgb(0, 39, 91);
+$color:#ffffff;
+$borderColor:#2a61b0;
+$primaryColor:#85e0ff;
+@mixin px2vw($request, $fontSize) {
+  #{$request}: 100vw * $fontSize/1366;
+}
+@mixin ul {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  margin:0 0 3px;
+  background: linear-gradient(
+    to right,
+    rgba(57, 111, 176, 0.1),
+    rgba(64, 110, 171, 0.6),
+    #286cc3
+  );
+  &:hover {
+    background: rgba(12, 60, 122, 0.8);
+  }
+  li {
+    white-space: nowrap;
+  }
+}
+@mixin span {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 1px 3px;
+  line-height: 20px;
+  box-sizing: border-box;
+  color: #fff;
+  &:hover {
+    border: 1px solid rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+.body {
+  position: relative;
+  display: flex;
+}
+.tree {
+  height: calc(100vh - 5vw - 110px);
+  overflow: hidden auto;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: $background;
+  height: 2vw;
+  line-height: 2vw;
+  font-size: 1vw;
+  color: $color;
+  border-top: 1px solid $borderColor;
+}
+
+#cesiumContainer {
+  height: 100vh;
+  position: relative;
+  flex: 1;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background: $background;
+
+  .header {
+    position: relative;
+    top: .5vw;
+    width: 100%;
+    height: 4.5vw;
+    background-size: 100%;
+    text-align: center;
+    line-height: 4vw;
+    color: $primaryColor;
+
+    /deep/.el-dropdown-link {
+      white-space: nowrap;
+    }
+
+    &-center {
+      height: 3.5vw;
+      text-align: center;
+
+      p {
+        font-size: 1vw;
+      }
+
+      h1 {
+        font-size: 1.6vw;
+        margin-top: -3vw;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-admin {
+      margin: 0 5px;
+    }
+  }
+
+  .toolbar {
+    height: 2vw;
+    line-height: 2vw;
+    position: absolute;
+    right: 0;
+    top: 1.5vw;
+    width: 100%;
+
+    &-left {
+      float: left;
+      width: 25%;
+      margin-left: 5%;
+      height: 100%;
+       a {
+          display: inline-block;
+          &:nth-child(2n){
+            margin: 0 .3vw;
+          }
+        }
+      &-list {
+        position: relative;
+        float: left;
+        width: 4.6vw;
+        height: 1.6vw;
+        text-align: center;
+        line-height: 1.6vw;
+        font-size: .9vw;
+        color: $primaryColor;
+        cursor: pointer;
+        &::before{
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          border: 1px solid #6176AF;
+          transform: skewX(-38deg);
+        }
+        &:hover::before {
+          border-color: #0efcff;
+          box-shadow: 1px 1px 3px 1px #0efcff inset;
+        }
+      }
+    }
+
+    &-right {
+      float: right;
+      width: 25%;
+      margin-right: 5%;
+      height: 100%;
+      & >span,a {
+        display: inline-block;
+        margin: 0 .1vw;
+      }
+    }
+    .listActive:before {
+      border-color: #0efcff;
+      box-shadow: 1px 1px 3px 1px #0efcff inset;
+    }
+  }
+}
+
+.sidebar {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  top: $header-height;
+  background: $background;
+  min-width: 250px;
+  width: 250px;
+  color: $color;
+  border: 1px solid $borderColor;
+  box-sizing: border-box;
+  position: relative;
+
+  .nav {
+    padding: 5px;
+    border: 1px solid $borderColor;
+    margin: 10px 10px 0;
+    @include px2vw(font-size, 14);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div{
+      float: left;
+    }
+    .svg-icon{
+      float: right;
+    }
+  }
+
+  &-body {
+    overflow: hidden auto;
+    padding: 0 10px;
+    .tabs {
+        height: 155px;
+        overflow: hidden auto;
+        margin-bottom: 10px;
+        border-right: 1px solid $borderColor;
+        border-bottom: 1px solid $borderColor;
+        border-left: 1px solid $borderColor;
+        ul {
+            @include px2vw(font-size, 10);
+            @include ul;
+        }
+        }
+        .tabindex {
+        &-title {
+            @include px2vw(font-size, 14);
+            border: 1px solid #2a61b0;
+            padding: 5px;
+            .el-input__inner {
+            color: #fff;
+            border: 1px solid #2364bb;
+            background-color: #0a3570;
+            }
+        }
+        &-body {
+            overflow: hidden auto;
+            border-right: 1px solid $borderColor;
+            border-bottom: 1px solid $borderColor;
+            border-left: 1px solid $borderColor;
+            ul {
+            @include px2vw(font-size, 10);
+            display: flex;
+            @include ul;
+            div{
+                // white-space: break-spaces;
+                &:first-child{
+                    flex: 1;
+                }
+                &:nth-child(2){
+                    width: 74px;
+                    text-align: right;
+                    // float: right;
+                }
+            }
+            li {
+                padding: 3px 0;
+            }
+            span {
+                display: none;
+            }
+            &:hover {
+                span {
+                display: block;
+                @include span;
+                }
+            }
+            }
+        }
+        }
+  }
+}
+
+.side-bar {
+  position: absolute;
+  left: 220px;
+  top: -1px;
+  bottom: 0;
+  z-index: 1000;
+  width: 200px;
+  box-sizing: border-box;
+  background-color: $background;
+  border-right: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+
+  &-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    padding: 5px 8px;
+    border-bottom: 1px solid $borderColor;
+  }
+
+  &-body {
+    padding: 10px;
+    height: calc(94.85vh - 150px);
+    overflow-y: auto;
+  }
+
+  &-foot {
+    position: absolute;
+    // bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid $borderColor;
+    padding: 5px 8px;
+    text-align: right;
+  }
+}
+// pdf模态框css
+.modelpdf {
+  position: fixed;
+  top: 3vw;
+  left: 10vw;
+  width: 80vw;
+  height: 86vh;
+  background: #00275b;
+  border: 1px solid #7cd4f4;
+  z-index: 1000000;
+  box-sizing: border-box;
+  &-title {
+    @include px2vw(font-size, 12);
+    height: 1.2vw;
+    line-height: 1.2vw;
+    padding: 5px;
+    text-align: center;
+    span {
+      float: right;
+    }
+  }
+  &-body {
+    height: calc(86vh - 1.2vw);
+  }
+}
+

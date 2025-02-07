@@ -1,0 +1,39 @@
+.cesium-credit-logoContainer,
+.cesium-viewer-bottom,
+.cesium-viewer-toolbar,
+.cesium-viewer-infoBoxContainer,
+.cesium-viewer-zoomIndicatorContainer{
+    display: none !important;
+}
+// .cesium-viewer-navigationContainer 
+.cesium-viewer-navigationContainer{
+    top: auto;
+    bottom: 0 !important;
+}
+// cesium timeline animation重写 
+.cesium-timeline-main{
+    border: solid 1px #48a2cc!important;
+}
+.cesium-timeline-bar{
+ background: linear-gradient(to bottom,rgba(178, 182, 189, 0.8) 0,rgba(40 ,100 ,178,09) 11%,rgb(0, 39, 91) 46%,rgba(53,53,53,.8) 81%,rgb(91, 114, 121) 100%)!important;
+}
+.cesium-animation-shuttleRingBack{
+    fill: #00275b!important;
+    stroke: #00275b!important;
+}
+.cesium-animation-rectButton .cesium-animation-buttonMain{
+    stroke: #7390b6!important;
+    fill: #00275b!important;
+}
+.cesium-animation-buttonToggled .cesium-animation-buttonGlow{
+    fill: #85e0ff!important;
+}
+.cesium-animation-knobInner{
+    fill: #275693!important;
+}
+.cesium-animation-knobOuter{
+    fill: #4b6d95!important;
+}
+.cesium-animation-shuttleRingPointer{
+    fill: #85e0ff!important;
+}
